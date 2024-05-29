@@ -1,0 +1,103 @@
+
+<nav class="navbar navbar-expand-lg navbar-dark flex justify-content-evenly" style="background-color: rgb(29, 0, 60);">
+
+ <a class="navbar-brand main-heading" href="{% url '' %}"> 
+            
+      &nbsp;  <i class="fa fa-ring" style="color: #ffffff;"></i> Jewelry store
+    
+    </a>
+  
+  
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbarNavDropdown"
+      aria-controls="navbarNavDropdown"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+  
+    </button>
+  
+  
+      <div class="collapse navbar-collapse text-center" id="navbarNavDropdown">
+  
+        
+        <ul class="navbar-nav mr-auto">
+  
+  
+          &nbsp;     &nbsp;     &nbsp; 
+  
+          {% if user.is_authenticated %}
+  
+            
+            <div class="dropdown">
+              <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false" style="background-color:rgb(29, 0, 60); border:none">
+                Gestion
+              </button>
+              <div class="dropdown-menu" style="background-color:rgb(29, 0, 60);border:none;">
+                <a class="nav-link" href="{% url 'dashboard' %}">Clients &nbsp; <i class="fa fa-user" aria-hidden="true"></i></a>
+                <a class="nav-link" href="{% url 'produit' %}">Produit &nbsp; <i class="fa fa-cart-plus" aria-hidden="true"></i></a>
+                <a class="nav-link" href="{% url 'four' %}">Fournisseur &nbsp; <i class="fa fa-cart-plus" aria-hidden="true"></i> </a>
+                <a class="nav-link" href="{% url 'commande' %}">Commandes &nbsp; <i class="fa fa-cart-plus" aria-hidden="true"></i> </a>
+                <a class="nav-link" href="{% url 'magasin' %}">Magasin &nbsp; <i class="fa fa-cart-plus" aria-hidden="true"></i> </a>
+                <a class="nav-link" href="{% url 'atelier' %}">Atelier &nbsp; <i class="fa fa-cart-plus" aria-hidden="true"></i> </a>
+                <a class="nav-link" href="{% url 'facturevente' %}">vente &nbsp; <i class="fa fa-cart-plus" aria-hidden="true"></i> </a>
+                <a class="nav-link" href="{% url 'transformation' %}">transformation &nbsp; <i class="fa fa-cart-plus" aria-hidden="true"></i> </a>
+                <a class="nav-link" href="{% url 'factureachat' %}">achat &nbsp; <i class="fa fa-cart-plus" aria-hidden="true"></i> </a>
+                <a class="nav-link" href="{% url 'bijoutier' %}">Bijoutiers &nbsp; <i class="fa fa-user" aria-hidden="true"></i></a>
+              </div>
+            </div>
+  
+  
+            &nbsp;     &nbsp;     &nbsp; 
+  
+  
+            <li class="nav-item">
+  
+              <a class="nav-link" href="{% url 'user-logout' %}">Sign out &nbsp; <i class="fa fa-sign-out" aria-hidden="true"></i> </a>
+  
+            </li>
+  
+  
+        </ul>
+  
+        {% else %}
+  
+        <li class="nav-item">
+  
+          <a class="nav-link" href="{% url 'register' %}"> Register </a>
+  
+        </li>
+  
+  
+        &nbsp;     &nbsp;     &nbsp; 
+  
+  
+        <li class="nav-item">
+  
+          <a class="nav-link" href="{% url 'my-login' %}">Login</a>
+  
+        </li>
+  
+  
+        {% endif %}
+      
+        
+      </div>
+  
+  
+  </nav>
+
+
+<style>
+  ul{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+ 
+</style>
+

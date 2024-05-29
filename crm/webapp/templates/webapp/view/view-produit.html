@@ -1,0 +1,35 @@
+{% extends 'webapp/base.html' %}
+
+{% block content %}
+
+    <div class="card">
+        <div class="card-body">
+            <i class="fa fa-cube" aria-hidden="true"></i> &nbsp;
+
+            <strong>
+                {{ produit.reference_produit|upper }}
+            </strong>
+
+            <hr> 
+
+            <p> <strong>ID:</strong> {{ produit.id}} </p>
+            <p> <strong>Référence:</strong> {{ produit.reference_produit }} </p>
+            <p> <strong>Poids (g):</strong> {{ produit.poids_produit }} </p>
+            <p> <strong>Origine:</strong> {{ produit.origine_produit }} </p>
+            <p> <strong>Pureté:</strong> {{ produit.purete_produit }} </p>
+        </div>
+    </div>
+
+    <br>
+
+    <a href="{% url 'dashboard' %}" class="btn btn-secondary">Return &nbsp; <i class="fa fa-arrow-left" aria-hidden="true"></i> </a>
+
+    &nbsp;
+
+    <a href="{% url 'update-produit' produit.id %}" class="btn btn-info">Update product &nbsp; <i class="fa fa-plus" aria-hidden="true"></i> </a>
+
+    &nbsp;
+
+    <a href="{% url 'delete-produit' produit.id %}" class="btn btn-danger">Delete &nbsp;<i class="fa fa-minus-square" aria-hidden="true"></i> </a>
+
+{% endblock %}

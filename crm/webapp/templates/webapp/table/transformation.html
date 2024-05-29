@@ -1,0 +1,54 @@
+{% extends 'webapp/base.html' %}
+
+{% block content %}
+
+    <h5> Bonjour, {{ user }}! 👋 </h5>
+
+    <hr>
+    <h1>Mes Transformations :</h1>
+    <a class="btn btn-outline-primary btn-sm" href="{% url 'create-transformation' %}">
+        Create a new transformation &nbsp; <i class="fa fa-plus-circle" aria-hidden="true"></i>
+    </a>
+
+    <hr> 
+
+    <table class="table table-hover table-bordered">
+        <thead class="table-light">
+            <tr>
+                <th>ID</th>
+                <th scope="col">Date</th>
+                <th scope="col">Coût Estimé</th>
+                <th scope="col">Coût Réel</th>
+                <th scope="col">Produit</th>
+                <th scope="col">Nb Unitaire Initial</th>
+                <th scope="col">Nb Unitaire Final</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% if transformations %}
+                {% for transformation in transformations %}
+                <tr>
+                    <td>{{ transformation.id }}</td>
+                    <td>{{ transformation.date_transformation }}</td>
+                    <td>{{ transformation.cout_estime }}</td>
+                    <td>{{ transformation.cout_reel }}</td>
+                    <td>{{ transformation.produit.reference_produit }}</td>
+                    <td>{{ transformation.nb_unitaire_transformer_initial }}</td>
+                    <td>{{ transformation.nb_unitaire_transformer_final }}</td>
+                    <td> 
+                        <a class="btn btn-success btn-sm" href="{% url 'view-transformation' transformation.id %}"> 
+                            <i class="fa fa-eye" aria-hidden="true"></i> 
+                        </a> 
+                    </td>
+                </tr>
+                {% endfor %}
+            {% else %}
+                <tr>
+                    <td colspan="8">Aucune transformation disponible.</td>
+                </tr>
+            {% endif %}
+        </tbody>
+    </table>
+
+{% endblock %}

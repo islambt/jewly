@@ -1,0 +1,46 @@
+{% extends 'webapp/base.html' %}
+
+{% block content %}
+    <h5> Bonjour, {{ user }}! 👋 </h5>
+
+    <hr>
+    <h1>Mes Factures d'achat :</h1>
+    <a class="btn btn-outline-primary btn-sm" href="{% url 'create-factureachat' %}">
+        Create a new Facture &nbsp; <i class="fa fa-plus-circle" aria-hidden="true"></i>
+    </a>
+
+    <hr> 
+
+    <table class="table table-hover table-bordered">
+        <thead class="table-light">
+            <tr>
+                <th>ID</th>
+                <th scope="col">Date</th>
+                <th scope="col">Montant Total (TTC)</th>
+        
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% if factures %}
+                {% for facture in factures %}
+                <tr>
+                    <td>{{ facture.id }}</td>
+                    <td>{{ facture.date_facture_achat }}</td>
+                    <td>{{ facture.montant_total_achat_TTC }}</td>
+                    
+                    <td> 
+                        <a class="btn btn-success btn-sm" href="{% url 'view-factureachat' facture.id %}"> 
+                            <i class="fa fa-eye" aria-hidden="true"></i> 
+                        </a> 
+                    </td>
+                </tr>
+                {% endfor %}
+            {% else %}
+                <tr>
+                    <td colspan="5">Aucune facture disponible.</td>
+                </tr>
+            {% endif %}
+        </tbody>
+    </table>
+{% endblock %}

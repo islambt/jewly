@@ -1,0 +1,41 @@
+{% extends 'webapp/base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+    <div class="container bg-light shadow-md p-5 form-layout">
+
+        <h3> Modifier un fournisseur </h3>
+
+        <h6> Commencez à modifier les détails requis pour votre fournisseur. </h6>
+
+        <hr>
+        <br>
+
+        <form method="POST" autocomplete="off">
+
+            {% csrf_token %}
+
+            {% for field in form %}
+            {{ field|as_crispy_field }}
+            <br>
+            {% endfor %}
+            
+            <button type="submit" class="btn btn-primary"> 
+                Modifier le fournisseur &nbsp; <i class="fa fa-check" aria-hidden="true"></i>
+            </button>
+
+            &nbsp;
+
+            <a href="{% url 'four' %}" class="btn btn-secondary"> 
+                Retour &nbsp; <i class="fa fa-arrow-left" aria-hidden="true"></i>
+            </a>
+
+        </form>
+
+    </div>
+
+    <br>
+
+{% endblock %}

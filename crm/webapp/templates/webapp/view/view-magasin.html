@@ -1,0 +1,34 @@
+{% extends 'webapp/base.html' %}
+
+{% block content %}
+
+    <div class="card">
+        <div class="card-body">
+            <i class="fa fa-cube" aria-hidden="true"></i> &nbsp;
+
+            <strong>
+                {{ magasin.nom_magasin|upper }}
+            </strong>
+
+            <hr> 
+
+            <p> <strong>ID:</strong> {{ magasin.id }} </p>
+            <p> <strong>Nom:</strong> {{ magasin.nom_magasin }} </p>
+            <p> <strong>Téléphone:</strong> {{ magasin.num_tel_magasin }} </p>
+            <p> <strong>Adresse:</strong> {{ magasin.adresse_magasin }} </p>
+        </div>
+    </div>
+
+    <br>
+
+    <a href="{% url 'magasin' %}" class="btn btn-secondary">Return &nbsp; <i class="fa fa-arrow-left" aria-hidden="true"></i> </a>
+
+    &nbsp;
+
+    <a href="{% url 'update-magasin' magasin.id %}" class="btn btn-info">Update magasin &nbsp; <i class="fa fa-plus" aria-hidden="true"></i> </a>
+
+    &nbsp;
+
+    <a href="{% url 'delete-magasin' magasin.id %}" class="btn btn-danger">Delete &nbsp;<i class="fa fa-minus-square" aria-hidden="true"></i> </a>
+
+{% endblock %}

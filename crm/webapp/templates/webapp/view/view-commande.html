@@ -1,0 +1,36 @@
+
+
+
+
+{% extends 'webapp/base.html' %}
+
+{% block content %}
+    <div class="card">
+        <div class="card-body">
+            <i class="fa fa-file-invoice" aria-hidden="true"></i> &nbsp;
+
+            <strong>
+                Commande {{ commande.id_commande }}
+            </strong>
+
+            <hr> 
+
+            <p> <strong>ID:</strong> {{ commande.id }} </p>
+            <p> <strong>Date:</strong> {{ commande.date_commande }} </p>
+            <p> <strong>Bijoutier:</strong> {{ commande.bijoutier.nom_bijoutier }} </p>
+            <p> <strong>Facture Vente:</strong> {{ commande.facture_vente.id_facture_vente }} </p>
+        </div>
+    </div>
+
+    <br>
+
+    <a href="{% url 'commande' %}" class="btn btn-secondary">Retour &nbsp; <i class="fa fa-arrow-left" aria-hidden="true"></i> </a>
+
+    &nbsp;
+
+    <a href="{% url 'update-commande' commande.id %}" class="btn btn-info">Mettre à jour &nbsp; <i class="fa fa-pencil" aria-hidden="true"></i> </a>
+
+    &nbsp;
+
+    <a href="{% url 'delete-commande' commande.id %}" class="btn btn-danger">Supprimer &nbsp;<i class="fa fa-trash" aria-hidden="true"></i> </a>
+{% endblock %}

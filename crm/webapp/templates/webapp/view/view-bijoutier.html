@@ -1,0 +1,35 @@
+{% extends 'webapp/base.html' %}
+
+{% block content %}
+    <div class="card">
+        <div class="card-body">
+            <i class="fa fa-user" aria-hidden="true"></i> &nbsp;
+
+            <strong>
+                Bijoutier {{ bijoutier.nom_bijoutier }}
+            </strong>
+
+            <hr> 
+
+            <p> <strong>ID:</strong> {{ bijoutier.id }} </p>
+            <p> <strong>Nom:</strong> {{ bijoutier.nom_bijoutier }} </p>
+            <p> <strong>Email:</strong> {{ bijoutier.email_bijoutier }} </p>
+            <p> <strong>Adresse:</strong> {{ bijoutier.adresse_bijoutier }} </p>
+            <p> <strong>Téléphone:</strong> {{ bijoutier.tel_bijoutier }} </p>
+            <p> <strong>Atelier:</strong> {{ bijoutier.atelier.nom_atelier }} </p>
+            <p> <strong>Magasin:</strong> {{ bijoutier.magasin.nom_magasin }} </p>
+        </div>
+    </div>
+
+    <br>
+
+    <a href="{% url 'bijoutier' %}" class="btn btn-secondary">Retour &nbsp; <i class="fa fa-arrow-left" aria-hidden="true"></i> </a>
+
+    &nbsp;
+
+    <a href="{% url 'update-bijoutier' bijoutier.id %}" class="btn btn-info">Mettre à jour &nbsp; <i class="fa fa-pencil" aria-hidden="true"></i> </a>
+
+    &nbsp;
+
+    <a href="{% url 'delete-bijoutier' bijoutier.id %}" class="btn btn-danger">Supprimer &nbsp;<i class="fa fa-trash" aria-hidden="true"></i> </a>
+{% endblock %}

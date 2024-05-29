@@ -1,0 +1,46 @@
+{% extends 'webapp/base.html' %}
+
+{% block content %}
+    <h5> Bonjour, {{ user }}! 👋 </h5>
+
+    <hr>
+    <h1>Mes Commandes :</h1>
+    <a class="btn btn-outline-primary btn-sm" href="{% url 'create-commande' %}">
+        Create a new Commande &nbsp; <i class="fa fa-plus-circle" aria-hidden="true"></i>
+    </a>
+
+    <hr> 
+
+    <table class="table table-hover table-bordered">
+        <thead class="table-light">
+            <tr>
+                <th>ID</th>
+                <th scope="col">Date</th>
+                <th scope="col">Bijoutier</th>
+                <th scope="col">Facture Vente</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% if commandes %}
+                {% for commande in commandes %}
+                <tr>
+                    <td>{{ commande.id }}</td>
+                    <td>{{ commande.date_commande }}</td>
+                    <td>{{ commande.bijoutier.nom_bijoutier }}</td>
+                    <td>{{ commande.facture_vente.id }}</td>
+                    <td> 
+                        <a class="btn btn-success btn-sm" href="{% url 'view-commande' commande.id %}"> 
+                            <i class="fa fa-eye" aria-hidden="true"></i> 
+                        </a> 
+                    </td>
+                </tr>
+                {% endfor %}
+            {% else %}
+                <tr>
+                    <td colspan="5">Aucune commande disponible.</td>
+                </tr>
+            {% endif %}
+        </tbody>
+    </table>
+{% endblock %}

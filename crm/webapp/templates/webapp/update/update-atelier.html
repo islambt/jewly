@@ -1,0 +1,39 @@
+{% extends 'webapp/base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+    <div class="container bg-light shadow-md p-5 form-layout">
+
+        <h3> Modifier un atelier </h3>
+
+        <h6> Commencez à modifier les détails requis pour votre atelier. </h6>
+
+        <hr>
+        <br>
+
+        <form method="POST" autocomplete="off">
+            {% csrf_token %}
+            {% for field in form %}
+                {{ field|as_crispy_field }}
+                <br>
+            {% endfor %}
+            
+            <button type="submit" class="btn btn-primary"> 
+                Modifier l'atelier &nbsp; <i class="fa fa-check" aria-hidden="true"></i>
+            </button>
+
+            &nbsp;
+
+            <a href="{% url 'atelier' %}" class="btn btn-secondary"> 
+                Retour &nbsp; <i class="fa fa-arrow-left" aria-hidden="true"></i>
+            </a>
+
+        </form>
+
+    </div>
+
+    <br>
+
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends 'webapp/base.html' %}
+
+{% block content %}
+
+    <h5> Bonjour, {{ user }}! 👋 </h5>
+
+    <hr>
+    <h1>Mes Magasins :</h1>
+    <a class="btn btn-outline-primary btn-sm" href="{% url 'create-magasin' %}">
+        Create a new magasin &nbsp; <i class="fa fa-plus-circle" aria-hidden="true"></i>
+    </a>
+
+    <hr> 
+
+    <table class="table table-hover table-bordered">
+        <thead class="table-light">
+            <tr>
+                <th>ID</th>
+                <th scope="col">Nom du magasin</th>
+                <th scope="col">Téléphone</th>
+                <th scope="col">Adresse</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% if magasin %}
+                {% for magasin in magasin %}
+                <tr>
+                    <td>{{ magasin.id }}</td>
+                    <td>{{ magasin.nom_magasin }}</td>
+                    <td>{{ magasin.num_tel_magasin }}</td>
+                    <td>{{ magasin.adresse_magasin }}</td>
+                    <td> 
+                        <a class="btn btn-success btn-sm" href="{% url 'view-magasin' magasin.id %}"> 
+                            <i class="fa fa-eye" aria-hidden="true"></i> 
+                        </a> 
+                    </td>
+                </tr>
+                {% endfor %}
+            {% else %}
+                <tr>
+                    <td colspan="5">Aucun magasin disponible.</td>
+                </tr>
+            {% endif %}
+        </tbody>
+    </table>
+
+{% endblock %}

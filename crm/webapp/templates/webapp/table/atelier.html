@@ -1,0 +1,50 @@
+{% extends 'webapp/base.html' %}
+
+{% block content %}
+
+    <h5> Bonjour, {{ user }}! 👋 </h5>
+
+    <hr>
+    <h1>Mes Ateliers :</h1>
+    <a class="btn btn-outline-primary btn-sm" href="{% url 'create-atelier' %}">
+        Create a new atelier &nbsp; <i class="fa fa-plus-circle" aria-hidden="true"></i>
+    </a>
+
+    <hr> 
+
+    <table class="table table-hover table-bordered">
+        <thead class="table-light">
+            <tr>
+                <th>ID</th>
+                <th scope="col">Nom de l'atelier</th>
+                <th scope="col">Adresse</th>
+                <th scope="col">Produit</th>
+                <th scope="col">Transformation</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% if ateliers %}
+                {% for atelier in ateliers %}
+                <tr>
+                    <td>{{ atelier.id }}</td>
+                    <td>{{ atelier.nom_atelier }}</td>
+                    <td>{{ atelier.adresse_atelier }}</td>
+                    <td>{{ atelier.produit.reference_produit }}</td>
+                    <td>{{ atelier.transformation.id_transformation }}</td>
+                    <td> 
+                        <a class="btn btn-success btn-sm" href="{% url 'view-atelier' atelier.id %}"> 
+                            <i class="fa fa-eye" aria-hidden="true"></i> 
+                        </a> 
+                    </td>
+                </tr>
+                {% endfor %}
+            {% else %}
+                <tr>
+                    <td colspan="6">Aucun atelier disponible.</td>
+                </tr>
+            {% endif %}
+        </tbody>
+    </table>
+
+{% endblock %}

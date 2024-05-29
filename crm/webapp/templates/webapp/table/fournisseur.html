@@ -1,0 +1,48 @@
+{% extends 'webapp/base.html' %}
+
+{% block content %}
+
+    <h5> Bonjour, {{ user }}! 👋 </h5>
+
+    <hr>
+    <h1>Mes Fournisseurs :</h1>
+    <a class="btn btn-outline-primary btn-sm" href="{% url 'create-four' %}">
+        Create a new fournisseur &nbsp; <i class="fa fa-plus-circle" aria-hidden="true"></i>
+    </a>
+
+    <hr> 
+
+    <table class="table table-hover table-bordered">
+        <thead class="table-light">
+            <tr>
+                <th>ID</th>
+                <th scope="col">Nom du fournisseur</th>
+                <th scope="col">Adresse</th>
+                <th scope="col">Téléphone</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% if four %}
+                {% for fou in four %}
+                <tr>
+                    <td>{{ fou.id }}</td>
+                    <td>{{ fou.nom_fournisseur }}</td>
+                    <td>{{ fou.adresse_fournisseur }}</td>
+                    <td>{{ fou.tel_fournisseur }}</td>
+                    <td> 
+                        <a class="btn btn-success btn-sm" href="{% url 'view-four' fou.id %}"> 
+                            <i class="fa fa-eye" aria-hidden="true"></i> 
+                        </a> 
+                    </td>
+                </tr>
+                {% endfor %}
+            {% else %}
+                <tr>
+                    <td colspan="5">Aucun fournisseur disponible.</td>
+                </tr>
+            {% endif %}
+        </tbody>
+    </table>
+
+{% endblock %}

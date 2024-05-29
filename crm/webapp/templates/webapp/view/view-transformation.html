@@ -1,0 +1,37 @@
+{% extends 'webapp/base.html' %}
+
+{% block content %}
+
+    <div class="card">
+        <div class="card-body">
+            <i class="fa fa-cogs" aria-hidden="true"></i> &nbsp;
+
+            <strong>
+                Transformation {{ transformation.id_transformation }}
+            </strong>
+
+            <hr> 
+
+            <p> <strong>ID:</strong> {{ transformation.id }} </p>
+            <p> <strong>Date:</strong> {{ transformation.date_transformation }} </p>
+            <p> <strong>Coût Estimé:</strong> {{ transformation.cout_estime }} </p>
+            <p> <strong>Coût Réel:</strong> {{ transformation.cout_reel }} </p>
+            <p> <strong>Produit:</strong> {{ transformation.produit.reference_produit }} </p>
+            <p> <strong>Nb Unitaire Initial:</strong> {{ transformation.nb_unitaire_transformer_initial }} </p>
+            <p> <strong>Nb Unitaire Final:</strong> {{ transformation.nb_unitaire_transformer_final }} </p>
+        </div>
+    </div>
+
+    <br>
+
+    <a href="{% url 'transformation' %}" class="btn btn-secondary">Return &nbsp; <i class="fa fa-arrow-left" aria-hidden="true"></i> </a>
+
+    &nbsp;
+
+    <a href="{% url 'update-transformation' transformation.id %}" class="btn btn-info">Update transformation &nbsp; <i class="fa fa-plus" aria-hidden="true"></i> </a>
+
+    &nbsp;
+
+    <a href="{% url 'delete-transformation' transformation.id %}" class="btn btn-danger">Delete &nbsp;<i class="fa fa-minus-square" aria-hidden="true"></i> </a>
+
+{% endblock %}

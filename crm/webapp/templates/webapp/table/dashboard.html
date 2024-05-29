@@ -1,0 +1,57 @@
+{% extends 'webapp/base.html' %}
+
+{% block content %}
+
+    <h5> Bonjour, {{ user }}! 👋 </h5>
+
+    <hr>
+    <h1>Mes Clients</h1>
+    <a class="btn btn-outline-primary btn-sm" href="{% url 'create-record' %}">
+        Create a new client &nbsp; <i class="fa fa-plus-circle" aria-hidden="true"></i>
+    </a>
+
+    <hr> 
+
+    <table class="table table-hover table-bordered">
+        <thead class="table-light">
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Nom</th>
+                <th scope="col">Prénom</th>
+                <th scope="col">Numéro de téléphone</th>
+                <th scope="col">NIF</th>
+                <th scope="col">NIS</th>
+                <th scope="col">Art</th>
+                <th scope="col">RC</th>
+                <th scope="col">View</th>
+            </tr>
+        </thead>
+
+        <tbody>
+        {% if records %}
+            {% for record in records %}
+            <tr>
+                <td>{{ record.id }}</td>
+                <td>{{ record.nom_client }}</td>
+                <td>{{ record.prenom_client }}</td>
+                <td>{{ record.num_tel_client }}</td>
+                <td>{{ record.NIF }}</td>
+                <td>{{ record.NIS }}</td>
+                <td>{{ record.Art }}</td>
+                <td>{{ record.RC }}</td>
+                <td>
+                    <a class="btn btn-success btn-sm" href="{% url 'record' record.id %}">
+                        <i class="fa fa-eye" aria-hidden="true"></i>
+                    </a>
+                </td>
+            </tr>
+            {% endfor %}
+        {% else %}
+            <tr>
+                <td colspan="9">Aucun client disponible.</td>
+            </tr>
+        {% endif %}
+        </tbody>
+    </table>
+
+{% endblock %}

@@ -1,0 +1,52 @@
+{% extends 'webapp/base.html' %}
+
+{% block content %}
+    <h5> Welcome, {{ user }}! 👋 </h5>
+
+    <hr>
+    <h1>Mes Bijoutiers :</h1>
+    <a class="btn btn-outline-primary btn-sm" href="{% url 'create-bijoutier' %}">
+        Create a new Bijoutier &nbsp; <i class="fa fa-plus-circle" aria-hidden="true"></i>
+    </a>
+
+    <hr> 
+
+    <table class="table table-hover table-bordered">
+        <thead class="table-light">
+            <tr>
+                <th>ID</th>
+                <th scope="col">Nom</th>
+                <th scope="col">Email</th>
+                <th scope="col">Adresse</th>
+                <th scope="col">Téléphone</th>
+                <th scope="col">Atelier</th>
+                <th scope="col">Magasin</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% if bijoutiers %}
+                {% for bijoutier in bijoutiers %}
+                <tr>
+                    <td>{{ bijoutier.id }}</td>
+                    <td>{{ bijoutier.nom_bijoutier }}</td>
+                    <td>{{ bijoutier.email_bijoutier }}</td>
+                    <td>{{ bijoutier.adresse_bijoutier }}</td>
+                    <td>{{ bijoutier.tel_bijoutier }}</td>
+                    <td>{{ bijoutier.atelier.nom_atelier }}</td>
+                    <td>{{ bijoutier.magasin.nom_magasin }}</td>
+                    <td> 
+                        <a class="btn btn-success btn-sm" href="{% url 'view-bijoutier' bijoutier.id %}"> 
+                            <i class="fa fa-eye" aria-hidden="true"></i> 
+                        </a> 
+                    </td>
+                </tr>
+                {% endfor %}
+            {% else %}
+                <tr>
+                    <td colspan="8">Aucun bijoutier disponible.</td>
+                </tr>
+            {% endif %}
+        </tbody>
+    </table>
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends 'webapp/base.html' %}
+
+{% block content %}
+
+    <div class="card">
+        <div class="card-body">
+            <i class="fa fa-industry" aria-hidden="true"></i> &nbsp;
+
+            <strong>
+                {{ atelier.nom_atelier|upper }}
+            </strong>
+
+            <hr> 
+
+            <p> <strong>ID:</strong> {{ atelier.id }} </p>
+            <p> <strong>Nom:</strong> {{ atelier.nom_atelier }} </p>
+            <p> <strong>Adresse:</strong> {{ atelier.adresse_atelier }} </p>
+            <p> <strong>Produit:</strong> {{ atelier.produit.reference_produit }} </p>
+            <p> <strong>Transformation:</strong> {{ atelier.transformation.id_transformation }} </p>
+        </div>
+    </div>
+
+    <br>
+
+    <a href="{% url 'atelier' %}" class="btn btn-secondary">Return &nbsp; <i class="fa fa-arrow-left" aria-hidden="true"></i> </a>
+
+    &nbsp;
+
+    <a href="{% url 'update-atelier' atelier.id %}" class="btn btn-info">Update atelier &nbsp; <i class="fa fa-plus" aria-hidden="true"></i> </a>
+
+    &nbsp;
+
+    <a href="{% url 'delete-atelier' atelier.id %}" class="btn btn-danger">Delete &nbsp;<i class="fa fa-minus-square" aria-hidden="true"></i> </a>
+
+{% endblock %}

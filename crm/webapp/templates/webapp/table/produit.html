@@ -1,0 +1,52 @@
+{% extends 'webapp/base.html' %}
+
+{% block content %}
+
+    <h5> Bonjour, {{ user }}! 👋 </h5>
+
+    <hr>
+    <h1>Mes Produits :</h1>
+    <a class="btn btn-outline-primary btn-sm" href="{% url 'create-produit' %}">
+        Create a new produit &nbsp; <i class="fa fa-plus-circle" aria-hidden="true"></i>
+    </a>
+
+    <hr> 
+
+    <table class="table table-hover table-bordered">
+        <thead class="table-light">
+            <tr>
+                <th>ID</th>
+                <th scope="col">Référence du produit</th>
+                <th scope="col">Poids (g)</th>
+                <th scope="col">Pays d’origine</th>
+                <th scope="col">Pureté (%)</th>
+                <th scope="col">Quantité</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% if products %}
+                {% for product in products %}
+                <tr>
+                    <td>{{ product.id }}</td>
+                    <td>{{ product.reference_produit }}</td>
+                    <td>{{ product.poids_produit }}</td>
+                    <td>{{ product.origine_produit }}</td>
+                    <td>{{ product.purete_produit }}</td>
+                    <td>{{ product.quantite }}</td>
+                    <td> 
+                        <a class="btn btn-success btn-sm" href="{% url 'view-produit' product.id %}"> 
+                            <i class="fa fa-eye" aria-hidden="true"></i> 
+                        </a> 
+                    </td>
+                </tr>
+                {% endfor %}
+            {% else %}
+                <tr>
+                    <td colspan="6">Aucun produit disponible.</td>
+                </tr>
+            {% endif %}
+        </tbody>
+    </table>
+
+{% endblock %}

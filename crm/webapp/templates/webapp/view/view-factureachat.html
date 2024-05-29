@@ -1,0 +1,32 @@
+{% extends 'webapp/base.html' %}
+
+{% block content %}
+    <div class="card">
+        <div class="card-body">
+            <i class="fa fa-file-text" aria-hidden="true"></i> &nbsp;
+
+            <strong>
+                Facture {{ facture.id }}
+            </strong>
+
+            <hr> 
+
+            <p> <strong>ID:</strong> {{ facture.id }} </p>
+            <p> <strong>Date:</strong> {{ facture.date_facture_achat }} </p>
+            <p> <strong>Montant Total (TTC):</strong> {{ facture.montant_total_achat_TTC }} </p>
+            
+        </div>
+    </div>
+
+    <br>
+
+    <a href="{% url 'factureachat' %}" class="btn btn-secondary">Return &nbsp; <i class="fa fa-arrow-left" aria-hidden="true"></i> </a>
+
+    &nbsp;
+
+    <a href="{% url 'update-factureachat' facture.id %}" class="btn btn-info">Update Facture &nbsp; <i class="fa fa-plus" aria-hidden="true"></i> </a>
+
+    &nbsp;
+
+    <a href="{% url 'delete-factureachat' facture.id %}" class="btn btn-danger">Delete &nbsp;<i class="fa fa-minus-square" aria-hidden="true"></i> </a>
+{% endblock %}
